@@ -1,0 +1,23 @@
+services:
+  sql-station:
+    build:
+      context: .
+      args:
+        INSTALL_MSSQL: ${INSTALL_MSSQL:-false}
+        INSTALL_ORACLE: ${INSTALL_ORACLE:-false}
+    image: sql-station:latest
+    container_name: sql-station
+    init: true
+    ports:
+      - "${SQL_STATION_PORT:-8000}:8000"
+    environment:
+      SQL_ADMIN_DATA_DIR: /app/data
+      # SQL_ADMIN_MAX_ROWS_LIMIT: "5000"
+      # SQL_ADMIN_MAX_PAGE_SIZE: "500"
+      # SQL_ADMIN_CORS_ORIGINS: "http://localhost:5173"
+    volumes:
+      - sql-station-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  sql-station-data:

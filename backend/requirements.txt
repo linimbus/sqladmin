@@ -1,0 +1,12 @@
+fastapi>=0.111,<1.0
+uvicorn[standard]>=0.30
+SQLAlchemy>=2.0,<2.1
+pymysql>=1.1
+pg8000>=1.31
+cryptography>=42
+python-multipart>=0.0.9
+
+# --- 可选驱动（按需安装） ---------------------------------------------
+# SQL Server:  pip install pymssql
+# Oracle:      pip install oracledb
+# ---------------------------------------------------------------------
